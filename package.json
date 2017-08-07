@@ -21,6 +21,7 @@
     "test": "jest"
   },
   "devDependencies": {
+    "awesome-typescript-loader": "^3.2.2",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.1",
@@ -67,6 +68,8 @@
     "sass-loader": "^6.0.6",
     "serve": "^6.0.6",
     "style-loader": "^0.18.2",
+    "ts-graphql-plugin": "^1.1.0",
+    "typescript": "^2.4.2",
     "webpack": "^3.4.1",
     "webpack-bundle-analyzer": "^2.8.2",
     "webpack-chunk-hash": "^0.4.0",
@@ -77,6 +80,10 @@
     "zopfli-webpack-plugin": "^0.1.0"
   },
   "dependencies": {
+    "@types/node": "^8.0.19",
+    "@types/react": "^16.0.0",
+    "@types/react-dom": "^15.5.2",
+    "@types/react-router-dom": "^4.0.7",
     "apollo-local-query": "^0.3.0",
     "apollo-server-koa": "^1.0.5",
     "boxen": "^1.2.1",
@@ -103,7 +110,8 @@
     "redux": "^3.7.1",
     "redux-thunk": "^2.2.0",
     "regenerator-runtime": "^0.10.5",
-    "seamless-immutable": "^7.1.2"
+    "seamless-immutable": "^7.1.2",
+    "tslib": "^1.7.1"
   },
   "engines": {
     "node": ">=7",

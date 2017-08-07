@@ -12,6 +12,9 @@ import WebpackConfig from 'webpack-config';
 // to those modules locally and they don't need to wind up in the bundle file
 import nodeModules from 'webpack-node-externals';
 
+// Plugin that forks TypeScript's checker to a separate process
+import { CheckerPlugin, TsConfigPathsPlugin } from 'awesome-typescript-loader';
+
 /* Local */
 import { regex, css } from './common';
 
@@ -96,6 +99,11 @@ export default new WebpackConfig().extend({
       // We're running on the Node.js server, so set `SERVER` to true
       SERVER: true,
     }),
+    // Fork TypeScript checker to a separate process
+    new CheckerPlugin(),
+
+    // Allow use of `paths` and `baseUrl`
+    new TsConfigPathsPlugin(),
   ],
   // No need to transpile `node_modules` files, since they'll obviously
   // still be available to Node.js when we run the resulting `server.js` entry

@@ -13,6 +13,10 @@ import path from 'path';
 import webpack from 'webpack';
 import WebpackConfig from 'webpack-config';
 
+// CheckerPlugin: Plugin that forks TypeScript's checker to a separate process
+// TsConfigPathsPlugin: Plugin that allows use of `paths` and `baseUrl`
+import { CheckerPlugin, TsConfigPathsPlugin } from 'awesome-typescript-loader';
+
 /* Local */
 
 // Our local path configuration, so webpack knows where everything is/goes
@@ -28,7 +32,7 @@ export default new WebpackConfig().extend('[root]/base.js').merge({
     // Client specific source code.  This is the stuff we write.
     browser: [
       // Entry point for the browser
-      path.join(PATHS.entry, 'browser.js'),
+      path.join(PATHS.entry, 'browser.tsx'),
     ],
   },
 
@@ -44,9 +48,9 @@ export default new WebpackConfig().extend('[root]/base.js').merge({
   // Modules specific to our browser bundle
   module: {
     rules: [
-      // .js(x) loading
+      // .(j|t)s(x) loading
       {
-        test: /\.jsx?$/,
+        test: /\.(j|t)sx?$/,
         exclude: /node_modules/,
         use: [
           {
@@ -97,5 +101,11 @@ export default new WebpackConfig().extend('[root]/base.js').merge({
     new webpack.DefinePlugin({
       SERVER: false,
     }),
+
+    // Fork TypeScript checker to a separate process
+    new CheckerPlugin(),
+
+    // Allow use of `paths` and `baseUrl`
+    new TsConfigPathsPlugin(),
   ],
 });
