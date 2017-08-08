@@ -77,7 +77,7 @@ export default new WebpackConfig().extend({
       // (which was used to spawn Webpack in the first place), because that's
       // exactly the same polyfill config we'll want to use for this bundle
       {
-        test: /\.jsx?$/,
+        test: /\.(j|t)sx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {

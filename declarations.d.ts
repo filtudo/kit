@@ -78,13 +78,12 @@ declare module 'koa-send' {
 declare module 'react-dom' {
   import * as reactDOM from 'react-dom';
   import {
-      ReactInstance, Component, ComponentState,
-      ReactElement, SFCElement, CElement,
-      DOMAttributes, DOMElement
+      Component, ComponentState,
+      ReactElement
   } from 'react';
-  export function hydrate<P extends DOMAttributes<T>, T extends Element>(
-      element: DOMElement<P, T>,
+  export function hydrate<P>(
+      element: ReactElement<P>,
       container: Element | null,
-      callback?: (element: T) => any
-  ): T;
+      callback?: (component?: Component<P, ComponentState> | Element) => any
+  ): Component<P, ComponentState> | Element | void;
 }
